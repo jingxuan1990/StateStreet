@@ -2,56 +2,53 @@
 
 ##基础命令
 ```bash
-man(man man
+man(man man)
+.
+..
+ctrl + z(fg)  # 挂起
+ctrl + c  # 结束
+ctrl + d  # End Of Life
 
+cd         cd .     cd -        cd ..   cd + path
 ls         ls -l    ll  ls -F   ls -a
 pwd
 
-which
-whereis
+which     # only search command
+whereis   # command, document and so on
 
-mkdir      
-touch(umask)
-mv
-cp
-rm
-rmdir(rm -rf)
+mkdir     # mkidr -p + path   
+touch(umask)  # touch newfile
+mv        # rename or move file, dir
+cp        # cp -ap    cp -rf  cp -i
+rm        #  rm -rf
+rmdir(rm -rf) # remove empty dir
 
 cat
 less    
-more    b & space
-head    head -n
-tail    tail -n
+more    # b & space, n N 
+head    head -n 10
+tail    tail -n 10
 
 df      
 du
 
-ln
+ln      # ln, ln -s
 
-mount
-fdisk
+mount  # mount -t fat32 /mnt/share
+umount # umount /mnt/share or umount /dev/sha1
+fdisk  # fdisl -l
 
-tar
-unzip
+tar  # tar zcvf  newfile.tar.gz, tar zxvf arch.tar.gz .
+unzip  # unzip filename.zip
 
-cut
-wc
+cut    # cut -f1 -d ':' file
+wc     # wc -l, wc -c
 
-kill
-killall
-who
-```
-##帐号管理的一些命令
-```bash
-useradd
-usermod
-userdel
+kill   # kill process by id
+killall  # kill process by name
+who    # who is onlining ?
 
-groupadd
-groupmod
-groupdel
-
-su  su -    su - andy
+su     # su -    su - andy
 sudo(visudo)
 ```
 
@@ -62,16 +59,19 @@ r  w  x
 
 u  g  o = own group other
 
-umask e.g. 0002
-file 666 - umask e.g. 666 - 002 = 664  rw-rw-r (由八进制换算而成)
-dir  777 - umask e.g. 777 - 002 = 775  rwxrwxr-x
+umask  # e.g. 0002
+file   # 666 - umask e.g. 666 - 002 = 664  rw-rw-r (由八进制换算而成)
+dir    # 777 - umask e.g. 777 - 002 = 775  rwxrwxr-x
 ```
 ##数据重定向和管道
+```bash
 1. |
 2. >> 
 3. >
 4. <
-5. tee（双重定向）
+5. tee（双重定向） # screen or file
+6. cat file > /dev/null 2&1 # 2 - right, 1 - error
+```
 
 ## Shell Script
 ### Some Commands
