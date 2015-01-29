@@ -72,8 +72,9 @@ top
 ping -c 3
 telnet localhost 8088
 sleep 10
-fg + No
-jobs
+fg + No.
+bg      # restart  a job from back-end
+jobs    # show all jobs
 ```
 
 ##数据重定向和管道
