@@ -77,6 +77,18 @@ bg      # restart  a job from back-end
 jobs    # show all jobs
 ```
 
+##开关机命令
+```bash
+reboot
+shutdown -h 0
+init 0
+init 3 # text mode
+init 6 # reboot
+init 1 # singleton
+
+## .bash_profile .bashrc
+```
+
 ##数据重定向和管道
 ```bash
 1. |
@@ -89,7 +101,40 @@ jobs    # show all jobs
 ## Shell Script
 ### Some Commands
 ```bash
+exit + code (0-255)
 grep -v -i 
 awk
 sed
 ```
+### Control
+```bash
+
+```
+### Shell Function
+```bash
+function(){
+   echo "This is my function."
+}
+
+# $#, $*, $0, $1 ......
+# return -- return the exited code (0-255)
+# $?     -- function exited code
+# $rtn=`function_name`  -- return the result of function, not exited code
+# keyword -- local -- defined local varibles in function
+```
+
+### Shell Array
+```bash
+array=(1 2 3 4 5)
+
+# ${array[*]} --- show all elements
+# ${array[index]} -- index from zero begin
+# array length = $# - 1
+e.g.
+function count{
+   return $[$# - 1]
+}
+
+invoked: count $array
+```
+
