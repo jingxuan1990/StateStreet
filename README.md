@@ -58,23 +58,37 @@ r  w  x
 4  2  1
 
 u  g  o = own group other
+suig  sgid
 
 umask  # e.g. 0002
-file   # 666 - umask e.g. 666 - 002 = 664  rw-rw-r (由八进制换算而成)
+file   # 666 - umask e.g. 666 - 002 = 664  rw-rw-r
 dir    # 777 - umask e.g. 777 - 002 = 775  rwxrwxr-x
 ```
+##关于网络和进程命令
+```bash
+netstat -ano
+ps -ef | ps aux
+top
+ping -c 3
+telnet localhost 8088
+sleep 10
+fg + No
+jobs
+```
+
 ##数据重定向和管道
 ```bash
 1. |
 2. >> 
 3. >
 4. <
-5. tee（双重定向） # screen or file
-6. cat file > /dev/null 2&1 # 2 - right, 1 - error
+5. cat file > /dev/null 2&1 # 2 - right, 1 - error
 ```
 
 ## Shell Script
 ### Some Commands
-1. grep
-2. awk
-3. sed
+```bash
+grep -v -i 
+awk
+sed
+```
