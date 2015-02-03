@@ -92,10 +92,11 @@ init 1 # singleton
 ##数据重定向和管道
 ```bash
 1. |
-2. >> 
-3. >
-4. <
+2. >> (append)
+3. > (override)
+4. < or << (stdin)
 5. cat file > /dev/null 2&1 # 2 - error, 1 - stdout
+6. xargs    e.g. find . -name "^username" -type -f -print | xrags ls -l
 ```
 
 ## Shell Script
