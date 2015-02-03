@@ -113,8 +113,14 @@ sed
 ```
 ### Shell Function
 ```bash
-function(){
+function_name(){
    echo "This is my function."
+}
+
+or 
+
+function function_name(){
+   echo "this is my second function"
 }
 
 # $#, $*, $0, $1 ......
