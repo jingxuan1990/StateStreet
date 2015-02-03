@@ -36,7 +36,7 @@ ln      # ln, ln -s
 
 mount  # mount -t fat32 /mnt/share
 umount # umount /mnt/share or umount /dev/sha1
-fdisk  # fdisl -l
+fdisk  # fdisk -l
 
 tar  # tar zcvf  newfile.tar.gz, tar zxvf arch.tar.gz .
 unzip  # unzip filename.zip
@@ -95,7 +95,7 @@ init 1 # singleton
 2. >> (append)
 3. > (override)
 4. < or << (stdin)
-5. cat file > /dev/null 2&1 # 2 - error, 1 - stdout
+5. cat file > /dev/null 2>&1(>&) # 2 - error, 1 - stdout
 6. xargs    e.g. find . -name "^username" -type -f -print | xrags ls -l
 ```
 
