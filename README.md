@@ -95,7 +95,7 @@ init 1 # singleton
 2. >> 
 3. >
 4. <
-5. cat file > /dev/null 2&1 # 2 - right, 1 - error
+5. cat file > /dev/null 2&1 # 2 - error, 1 - stdout
 ```
 
 ## Shell Script
