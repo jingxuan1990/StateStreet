@@ -7,7 +7,7 @@ man(man man)
 ..
 ctrl + z(fg)  # 挂起
 ctrl + c  # 结束
-ctrl + d  # End Of Life
+ctrl + d  # End Of File
 
 cd         cd .     cd -        cd ..   cd + path
 ls         ls -l    ll  ls -F   ls -a
