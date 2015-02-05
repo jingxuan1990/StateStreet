@@ -63,6 +63,8 @@ suig  sgid
 umask  # e.g. 0002
 file   # 666 - umask e.g. 666 - 002 = 664  rw-rw-r
 dir    # 777 - umask e.g. 777 - 002 = 775  rwxrwxr-x
+
+tree -L 2 + path
 ```
 ##关于网络和进程命令
 ```bash
