@@ -1,6 +1,6 @@
-#Linux基础知识
+#Goal
 
-#####when I am doing profiling document for one project, I often use those following commands for searching some information.
+#####when I am doing profiling document for one project, I often use those following commands for searching some useful information.
 
 ```bash
 
