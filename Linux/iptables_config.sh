@@ -1,9 +1,3 @@
-## Iptables Configuration
-
-
-```bash
-
-
 #!/bin/bash
 # A sample firewall shell script 
 IPT="/sbin/iptables"
@@ -139,7 +133,3 @@ $IPT -A FORWARD -j LOG
 $IPT -A INPUT -j DROP
  
 exit 0
-
-
-
-```
