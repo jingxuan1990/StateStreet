@@ -1,0 +1,79 @@
+###########
+#!/bin/sh
+
+#
+# This script is invoked by /etc/init.d/ss_init which is invoked by /etc/rc.local
+# Its invoke is before ven/init.sh and app/init.sh
+#
+
+echo "InitTrack: iptable_cfg start --" `date +"%Y-%m-%d %H:%M:%S %z" `
+
+res=`/sbin/service iptables status`
+if [ "$res" = "Firewall is stopped." ]; then
+    /sbin/service iptables start
+fi
+
+#
+# IP table configuration files should be maintained under /usr/local/clo/app/iptable_cfg/
+# File name should be IPTABLE_${CLOUD_ENV}. CLOUD_ENV is the property you configure in profile.
+#
+iptable_cfg="/usr/local/clo/app/deploy/dat/IPTABLE_${CLOUD_ENV}"
+
+if [ -f "$iptable_cfg" ]; then
+        while read line
+        do
+                if [ -n "$line" ]; then
+                        line=`echo $line`
+                        if [ "${line:0:1}" != "#" ]; then
+                                host=`echo "$line" | cut -f1 -d " "`
+                                port=`echo "$line" | cut -f2 -d " "`
+                                echo "Add Firewall Exception: Host:${host}, Port:${port}"
+                                if [ -n "$host" ] && [ -n "$port" ]; then
+                                        /etc/init.d/add_iptables.sh $host $port
+                                else
+                                        echo "ERROR: Host or Port is empty"
+                                fi
+                        fi
+                fi
+        done < "$iptable_cfg"
+else
+        echo "ERROR: $iptable_cfg not exsits"
+fi
+
+echo "InitTrack: iptable_cfg end   --" `date +"%Y-%m-%d %H:%M:%S %z" `
+
+
+
+
+
+#####################
+
+#!/bin/bash
+# ========================================================================================
+# Installed software version info plugin for Nagios
+#
+# Written by    : Saswat Sarangi
+# Modifed by    : Thomas P
+# Release       : 1.4
+# Creation date : 18  SEPT 2013
+# Package       : BU Plugin
+# Description   : Nagios plugin (script) for add_iptables.sh which will change the iptables rules
+#
+#  $1 - ip  $2 - port   if not supplied then it should be null
+# Example:  ./add_iptables.sh
+#
+
+if [ "$1" != "null" ] && [ "$2" != "null" ];then
+echo "inside add"
+/sbin/iptables -I INPUT 8 -p tcp -s "$1" --dport "$2" -j ACCEPT
+elif [ "$1"  == "null" ] && [ "$2" != "null" ];then
+echo "inside port"
+/sbin/iptables -I INPUT 8 -p tcp -m tcp --dport "$2" -j ACCEPT
+elif [ "$1"  != "null" ] && [ "$2" == "null" ];then
+echo "inside port"
+/sbin/iptables -I INPUT 8 -p tcp -m tcp -s "$1" -j ACCEPT
+fi
+
+
+/sbin/service iptables save
+
