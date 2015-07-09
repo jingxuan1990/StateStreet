@@ -1,10 +1,6 @@
 ###########
 #!/bin/sh
 
-#
-# This script is invoked by /etc/init.d/ss_init which is invoked by /etc/rc.local
-# Its invoke is before ven/init.sh and app/init.sh
-#
 
 echo "InitTrack: iptable_cfg start --" `date +"%Y-%m-%d %H:%M:%S %z" `
 
@@ -13,10 +9,6 @@ if [ "$res" = "Firewall is stopped." ]; then
     /sbin/service iptables start
 fi
 
-#
-# IP table configuration files should be maintained under /usr/local/clo/app/iptable_cfg/
-# File name should be IPTABLE_${CLOUD_ENV}. CLOUD_ENV is the property you configure in profile.
-#
 iptable_cfg="/usr/local/clo/app/deploy/dat/IPTABLE_${CLOUD_ENV}"
 
 if [ -f "$iptable_cfg" ]; then
@@ -51,14 +43,6 @@ echo "InitTrack: iptable_cfg end   --" `date +"%Y-%m-%d %H:%M:%S %z" `
 #!/bin/bash
 # ========================================================================================
 # Installed software version info plugin for Nagios
-#
-# Written by    : Saswat Sarangi
-# Modifed by    : Thomas P
-# Release       : 1.4
-# Creation date : 18  SEPT 2013
-# Package       : BU Plugin
-# Description   : Nagios plugin (script) for add_iptables.sh which will change the iptables rules
-#
 #  $1 - ip  $2 - port   if not supplied then it should be null
 # Example:  ./add_iptables.sh
 #
