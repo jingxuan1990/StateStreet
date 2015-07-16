@@ -10,5 +10,5 @@ $ sudo apt-get install heirloom-mailx
 $ sudo yum install mailx
 ```
 
-mailx-url：　http://heirloom.sourceforge.net/mailx.html
+mailx-url：　http://heirloom.sourceforge.net/mailx.html　<br/>
 http://www.binarytides.com/linux-mailx-command/
